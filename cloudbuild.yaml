@@ -1,11 +1,24 @@
 steps:
+- name: 'gcr.io/cloud-builders/bash'
+  args:
+  - 'echo'
+  - 'IMAGE_NAME: ${_REGION}-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ws:latest'
+
+  - 'echo'
+  - 'REGION: ${_REGION}'
+  - 'PROJECT_ID: $PROJECT_ID'
+  - 'REPO_NAME: $_REPO_NAME'
+  id: 'Debug Image Name'
+
 - name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
   - '-t'
-  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/ws:latest'
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ws:latest'
   - '.'
+  id: 'Build Docker Image'
+
 images:
-- '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/ws:latest'
+- '${_REGION}-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ws:latest'
 options:
   logging: CLOUD_LOGGING_ONLY
