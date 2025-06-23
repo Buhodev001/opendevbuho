@@ -2,7 +2,7 @@
 echo "=== Iniciando Proxy SSH para Cloud Run (VPS Externo) ==="
 
 # Variables de entorno
-export DHOST=${DHOST:-"vps-1-ny.elbuhonero.cloud"}
+export DHOST=${DHOST:-"garcia.mrctz.live"}
 export DPORT=${DPORT:-"90"}
 export PORT=${PORT:-"8080"}
 export PACKSKIP=${PACKSKIP:-"0"}
