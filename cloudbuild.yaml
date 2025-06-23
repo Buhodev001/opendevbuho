@@ -1,13 +1,8 @@
 steps:
-- name: 'gcr.io/cloud-builders/bash'
+- name: 'gcr.io/cloud-builders/bash:3.1.2' # O ':latest', pero probando con una versión específica.
   args:
   - 'echo'
   - 'IMAGE_NAME: ${_REGION}-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/ws:latest'
-
-  - 'echo'
-  - 'REGION: ${_REGION}'
-  - 'PROJECT_ID: $PROJECT_ID'
-  - 'REPO_NAME: $_REPO_NAME'
   id: 'Debug Image Name'
 
 - name: 'gcr.io/cloud-builders/docker'
